@@ -1,0 +1,25 @@
+{
+    "name": "codexyash/supermarket",
+    "description": "Test Application for Supermarket",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^5.4",
+        "bramus/router": "~1.6",
+        "joshcam/mysqli-database-class": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "Yash Sharma",
+            "email": "codexyash@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Application\\": "application/"
+        },
+        "files": [
+            "application/Helpers/CommonHelper.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
