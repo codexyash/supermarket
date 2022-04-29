@@ -16,7 +16,7 @@ class Offers extends Model {
                         ->orderBy('id', 'desc')
                         ->get($this->table);
     }
-    
+
     public function getById($id) {
         return $this->db
                         ->ObjectBuilder()
@@ -27,11 +27,12 @@ class Offers extends Model {
     public function getByProductId($id) {
         return $this->db
                         ->ObjectBuilder()
-                        ->where('product_id', $id)
-                        ->orderBy('offer_price', 'desc')
-                        ->get($this->table);
+                        ->join("products p", "p.id=po.related_product_id", "LEFT")
+                        ->where('po.product_id', $id)
+                        ->orderBy('po.offer_price', 'desc')
+                        ->get($this->table . ' as po', null, 'po.*,p.title as related_product_title');
     }
-    
+
     public function getComboOffers($id) {
         return $this->db
                         ->ObjectBuilder()
@@ -40,7 +41,7 @@ class Offers extends Model {
                         ->orderBy('offer_price', 'desc')
                         ->get($this->table);
     }
-    
+
     public function getProductOffers($id) {
         return $this->db
                         ->ObjectBuilder()
@@ -49,4 +50,5 @@ class Offers extends Model {
                         ->orderBy('offer_price', 'asc')
                         ->get($this->table);
     }
+
 }

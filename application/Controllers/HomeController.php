@@ -13,18 +13,18 @@ class HomeController extends BaseController {
     }
 
     public function index() {
-        
+
         $products = (new Products)->getAll();
         $this->template
                 ->set_title('Home')
                 ->view('index', \compact('products'));
     }
-    
+
     public function details($product_id) {
-        
+
         $product = (new Products)->getById($product_id);
         $offers = (new Offers())->getByProductId($product_id);
-        
+
         $this->template
                 ->set_title($product->title)
                 ->view('product', \compact('product', 'offers'));

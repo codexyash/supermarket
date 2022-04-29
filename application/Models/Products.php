@@ -16,7 +16,7 @@ class Products extends Model {
                         ->orderBy('id', 'desc')
                         ->get($this->table);
     }
-    
+
     public function getById($id) {
         return $this->db
                         ->ObjectBuilder()
