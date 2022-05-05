@@ -9,6 +9,9 @@ class Product {
 
     static function prepareForCart($product_id, $qty = 1){
         $product = (new Products)->getById($product_id);
+        if (!$product) {
+            throw new \Exception('E_PRODUCT_NOT_FOUND');
+        }
         $comboOffers = self::getComboOffer($product, $qty);
         
         if(count($comboOffers) <= 1 && !$comboOffers[0]['extras']['has_offer']){

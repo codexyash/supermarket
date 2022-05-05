@@ -43,6 +43,6 @@ $router = new \Bramus\Router\Router();
 
 $url = parse_url(base_url());
 
-include '../routes/route.php';
+require_once __DIR__ . '/../routes/route.php';
 
 $router->run();

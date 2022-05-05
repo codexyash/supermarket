@@ -1,6 +1,7 @@
 <?php
-
-$router->set404('ErrorController@notFound');
+if (PHP_SAPI !== 'cli'){
+    $router->set404('ErrorController@notFound');
+}
 
 $router->setNamespace('\Application\Controllers');
 $router->get('/', 'HomeController@index');

@@ -18,15 +18,13 @@ class CartController extends BaseController {
     }
 
     public function index() {
-//        $offers = Product::prepareForCart(4, 1);
-//        prx($offers);
         $cart = $this->cart;
         $products = (new Products)->getAll();
         $cartItems = [];
         if (!$cart->isEmpty()) {
             $cartItems = $cart->getItems();
         }
-//        prx($cartItems);
+
         $total = number_format($cart->getExtraTotal('total_offer_price'), 2, '.', ',');
         $this->template
                 ->set_title('My Cart')
